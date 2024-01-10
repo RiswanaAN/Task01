@@ -1,0 +1,25 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: lightsteelblue;
+    display: flex;
+   
+}
+nav{
+    background-color: ivory;
+    display: flex;
+    justify-content: end;
+    width: 100vw; 
+    font-size: x-large;
+    font-weight: bold;
+    padding: 10px;
+}
+#item{
+    background-color: #80808090;
+    padding: 10px;
+    border-radius: 100%;
+    
+}

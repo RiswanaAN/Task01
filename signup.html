@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function registerUser(){
+           
+            let fname= document.getElementById("fname").value;
+            let lname= document.getElementById("lname").value;
+            console.log(fname, lname);
+            let username= document.getElementById("username").value;
+            let pswd= document.getElementById("psw").value;
+            let confirm_pswd= document.getElementById("confirmpswd").value;
+            if((fname.length>=3 && 
+                lname.length>=2 && 
+                username.length>=3 && 
+                pswd.length>=5)&&
+                (pswd == confirm_pswd)){
+                    let credential= {
+                        fname: fname,
+                        lname: lname,
+                        username: username,
+                        pswd: pswd
+                    };
+                    newCredential= JSON.stringify(credential);
+                    window.localStorage.setItem("userCredential", newCredential)
+                    window.location.href= "/page/login.html";
+                    
+                }
+                else{
+                    alert ("Fill all fields")
+                }
+                console.log(localStorage.userCredential);
+        }
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <form>
+            <h1>Register</h1>
+            
+            <input type="text" id="fname" placeholder="First Name" required value="">
+            
+            <input type="text" id="lname" placeholder="Last Name" required value="">
+            
+            <input type="text" id="username" placeholder="User Name" required value="">
+           
+            <input type="password" id="psw" placeholder="Password" required value="">
+            
+            <input type="password" id="confirmpswd" placeholder="Confirm Password" required value="">
+            <button id="btn" type="button" onclick="registerUser()"> Signup</button>
+        </form>
+    </div>    
+</body>
+</html>

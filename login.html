@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function loginUser(){
+            let username= document.getElementById("username").value;
+            let pswd= document.getElementById("psw").value;
+            let credentiall= localStorage.getItem("userCredential");
+            let userDetails= JSON.parse(credentiall);
+            if((username== userDetails.username) && (pswd== userDetails.pswd)){
+                 window.location.href= "/page/HomePage.html";
+                 document.getElementById("username").innerHTML= "";
+                 document.getElementById("psw").innerHTML= "";
+                
+            
+            }else{
+                alert("Check username and password");
+            }
+        }
+    </script>
+    
+</head>
+<body>
+    <div class="container">
+        <form>
+            <h1>Login</h1>
+            
+            <input type="text" placeholder="Enter username" id="username" required value="">
+            <input type="password" placeholder="Enter password" id="psw" required value="">
+            <button type="button" id="btn" onclick="loginUser()">Login</button>
+        </form>
+    </div>    
+</body>
+</html>

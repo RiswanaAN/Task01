@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="home.css">
+    <script>
+        let credentials= window.localStorage.getItem("userCredential");
+        let userDetails= JSON.parse(credentials);
+        let firstName= userDetails.fname;
+        let lastName= userDetails.lname;
+        let iconName= firstName.charAt(0).toUpperCase()+lastName.charAt(0).toUpperCase();
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("item").innerHTML= iconName;
+      });
+    </script>
+    <style>
+       
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <p id="item"></p>
+        </nav>
+    </div>
+</body>
+</html>
