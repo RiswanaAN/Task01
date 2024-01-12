@@ -1,59 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup Page</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script>
-        function registerUser(){
-           
-            let fname= document.getElementById("fname").value;
-            let lname= document.getElementById("lname").value;
-            console.log(fname, lname);
-            let username= document.getElementById("username").value;
-            let pswd= document.getElementById("psw").value;
-            let confirm_pswd= document.getElementById("confirmpswd").value;
-            if((fname.length>=3 && 
-                lname.length>=2 && 
-                username.length>=3 && 
-                pswd.length>=5)&&
-                (pswd == confirm_pswd)){
-                    let credential= {
-                        fname: fname,
-                        lname: lname,
-                        username: username,
-                        pswd: pswd
-                    };
-                    newCredential= JSON.stringify(credential);
-                    window.localStorage.setItem("userCredential", newCredential)
-                    window.location.href= "login.html";
-                    
-                }
-                else{
-                    alert ("Fill all fields")
-                }
-                console.log(localStorage.userCredential);
+      function registerUser() {
+        let fname = document.getElementById("fname").value;
+        let lname = document.getElementById("lname").value;
+        console.log(fname, lname);
+        let username = document.getElementById("username").value;
+        let pswd = document.getElementById("psw").value;
+        let confirm_pswd = document.getElementById("confirmpswd").value;
+        if (fname.length == 0) {
+          document.getElementById("emp1").innerText = "Enter the First Name";
+        } else {
+          document.getElementById("emp1").innerText = "";
         }
-    </script>
+        if (lname.length == 0) {
+          document.getElementById("emp2").innerHTML = "Enter the Last Name";
+        }else {
+          document.getElementById("emp2").innerText = "";
+        }
+        if (username.length == 0) {
+          document.getElementById("emp3").innerHTML = "Enter the UserName";
+        }else {
+          document.getElementById("emp3").innerText = "";
+        }
+        if (pswd.length == 0) {
+          document.getElementById("emp4").innerHTML = "Enter the Password";
+        }else {
+          document.getElementById("emp4").innerText = "";
+        }
+        if (confirm_pswd.length == 0) {
+          document.getElementById("emp5").innerHTML =
+            "Enter the Confirm Password";
+        }else {
+          document.getElementById("emp5").innerText = "";
+        }
+        if (
+          fname.length >= 3 &&
+          lname.length >= 2 &&
+          username.length >= 3 &&
+          pswd.length >= 5 &&
+          pswd == confirm_pswd
+        ) {
+          let credential = {
+            fname: fname,
+            lname: lname,
+            username: username,
+            pswd: pswd,
+          };
 
-</head>
-<body>
+          newCredential = JSON.stringify(credential);
+          window.localStorage.setItem("userCredential", newCredential);
+          window.location.href = "login.html";
+        }
+
+        console.log(localStorage.userCredential);
+      }
+    </script>
+  </head>
+  <body>
     <div class="container">
-        <form>
-            <h1>Register</h1>
-            
-            <input type="text" id="fname" placeholder="First Name" required value="">
-            
-            <input type="text" id="lname" placeholder="Last Name" required value="">
-            
-            <input type="text" id="username" placeholder="User Name" required value="">
-           
-            <input type="password" id="psw" placeholder="Password" required value="">
-            
-            <input type="password" id="confirmpswd" placeholder="Confirm Password" required value="">
-            <button id="btn" type="button" onclick="registerUser()"> Signup</button>
-        </form>
-    </div>    
-</body>
+      <form>
+        <h1>Register</h1>
+
+        <input
+          type="text"
+          id="fname"
+          placeholder="First Name"
+          required
+          value=""
+        />
+        <p id="emp1"></p>
+        <input
+          type="text"
+          id="lname"
+          placeholder="Last Name"
+          required
+          value=""
+        />
+        <p id="emp2"></p>
+        <input
+          type="text"
+          id="username"
+          placeholder="User Name"
+          required
+          value=""
+        />
+        <p id="emp3"></p>
+        <input
+          type="password"
+          id="psw"
+          placeholder="Password"
+          required
+          value=""
+        />
+        <p id="emp4"></p>
+        <input
+          type="password"
+          id="confirmpswd"
+          placeholder="Confirm Password"
+          required
+          value=""
+        />
+        <p id="emp5"></p>
+        <button id="btn" type="button" onclick="registerUser()">Signup</button>
+      </form>
+    </div>
+  </body>
 </html>

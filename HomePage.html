@@ -1,31 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page</title>
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="home.css" />
     <script>
-        let credentials= window.localStorage.getItem("userCredential");
-        let userDetails= JSON.parse(credentials);
-        let firstName= userDetails.fname;
-        let lastName= userDetails.lname;
-        let iconName= firstName.charAt(0).toUpperCase()+lastName.charAt(0).toUpperCase();
-        
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("item").innerHTML= iconName;
+      let credentials = window.localStorage.getItem("userCredential");
+      let userDetails = JSON.parse(credentials);
+      let firstName = userDetails.fname;
+      let lastName = userDetails.lname;
+      let iconName =
+        firstName.charAt(0).toUpperCase() + lastName.charAt(0).toUpperCase();
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("item").innerHTML = iconName;
       });
+
+      function fetchingDetails() {
+        fetch("https://reqres.in/api/users?page=1")
+          .then((details) => details.json())
+          .then((result) => {
+            let data = result.data;
+            let cardItem= document.getElementById("card")
+            data.map(
+              (i) =>{
+                let picture= document.createElement("img");
+                let card= document.createElement("div");
+                let fullName= document.createElement("h3");
+                let emailAddress= document.createElement("p");
+                
+                card.style.height= "200px";
+                card.style.border= "1px solid black";
+                card.style.width= "300px";
+                card.style.borderRadius= "25px";
+                card.style.display= "flex";
+                card.style.height= "300px";
+                card.style.flexDirection= "column";
+                card.style.backgroundColor= "lightsteelblue";
+                card.style.padding= "10px";
+                card.style.alignItems= "center";
+                card.style.gap= "25px";
+                card.style.marginBottom= "25px";
+
+                picture.style.height= "170px";
+                picture.style.objectFit= "cover";
+                picture.style.borderRadius= "50%";
+              
+                picture.setAttribute("src", i.avatar);
+                fullName.textContent= i.first_name+" "+ i.last_name;
+                emailAddress.textContent= i.email;
+                
+                card.appendChild(fullName);
+                card.appendChild(emailAddress);
+                card.appendChild(picture);
+                cardItem.appendChild(card);
+                
+              }
+               
+            );
+          });
+      }
+      fetchingDetails();
     </script>
-    <style>
-       
-    </style>
-    
-</head>
-<body>
+    <style></style>
+  </head>
+  <body>
     <div class="container">
+      <div>
         <nav>
-            <p id="item"></p>
+          <p id="item"></p>
         </nav>
+      </div>
+      <div class="mainContainer">
+        <h1>Hello ReqRes users!</h1>
+        <div id="card">
+          
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
