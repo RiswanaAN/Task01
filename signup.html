@@ -5,7 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup Page</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
+      $(document).ready(function(){
+        $("#fname").blur(function(){
+          let fname = document.getElementById("fname").value;
+          if (fname.length == 0) {
+              document.getElementById("emp1").innerText = "Enter the First Name";
+            } else {
+                document.getElementById("emp1").innerText = "";
+            }
+        });
+        $("#lname").blur(function(){
+          let lname = document.getElementById("lname").value;
+          if (lname.length == 0) {
+              document.getElementById("emp2").innerText = "Enter the Last Name";
+            } else {
+                document.getElementById("emp2").innerText = "";
+            }
+        });
+        $("#username").blur(function(){
+          let username = document.getElementById("username").value;
+          if (username.length == 0) {
+            document.getElementById("emp3").innerHTML = "Enter the UserName";
+          }else {
+            document.getElementById("emp3").innerText = "";
+         }
+        });
+        $("#psw").blur(function(){
+          let pswd = document.getElementById("psw").value;
+          if (pswd.length == 0) {
+            document.getElementById("emp4").innerHTML = "Enter the Password";
+          }else {
+            document.getElementById("emp4").innerText = "";
+          }
+        });
+        $("#confirmpswd").blur(function(){
+          let confirm_pswd = document.getElementById("confirmpswd").value;
+          if (confirm_pswd.length == 0) {
+            document.getElementById("emp5").innerHTML = "Enter the Confirm Password";
+          }else {
+            document.getElementById("emp5").innerText = "";
+          }
+        });
+      });
       function registerUser() {
         let fname = document.getElementById("fname").value;
         let lname = document.getElementById("lname").value;
@@ -13,32 +56,7 @@
         let username = document.getElementById("username").value;
         let pswd = document.getElementById("psw").value;
         let confirm_pswd = document.getElementById("confirmpswd").value;
-        if (fname.length == 0) {
-          document.getElementById("emp1").innerText = "Enter the First Name";
-        } else {
-          document.getElementById("emp1").innerText = "";
-        }
-        if (lname.length == 0) {
-          document.getElementById("emp2").innerHTML = "Enter the Last Name";
-        }else {
-          document.getElementById("emp2").innerText = "";
-        }
-        if (username.length == 0) {
-          document.getElementById("emp3").innerHTML = "Enter the UserName";
-        }else {
-          document.getElementById("emp3").innerText = "";
-        }
-        if (pswd.length == 0) {
-          document.getElementById("emp4").innerHTML = "Enter the Password";
-        }else {
-          document.getElementById("emp4").innerText = "";
-        }
-        if (confirm_pswd.length == 0) {
-          document.getElementById("emp5").innerHTML =
-            "Enter the Confirm Password";
-        }else {
-          document.getElementById("emp5").innerText = "";
-        }
+        
         if (
           fname.length >= 3 &&
           lname.length >= 2 &&
