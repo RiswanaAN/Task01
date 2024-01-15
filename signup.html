@@ -45,8 +45,9 @@
           }
         });
         $("#confirmpswd").blur(function(){
+          let pswd = document.getElementById("psw").value;
           let confirm_pswd = document.getElementById("confirmpswd").value;
-          if (confirm_pswd.length == 0 ) {
+          if (confirm_pswd.length == 0 || pswd != confirm_pswd) {
               document.getElementById("emp5").innerHTML = "Passwords do not match";
           } else {
               document.getElementById("emp5").innerText = "";
