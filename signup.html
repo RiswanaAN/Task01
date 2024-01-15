@@ -30,25 +30,29 @@
             document.getElementById("emp3").innerHTML = "Enter the UserName";
           }else {
             document.getElementById("emp3").innerText = "";
-         }
+          }
         });
         $("#psw").blur(function(){
           let pswd = document.getElementById("psw").value;
-          if (pswd.length == 0) {
-            document.getElementById("emp4").innerHTML = "Enter the Password";
+          let lowercase = /[a-z]/;
+          let uppercase = /[A-Z]/;
+          let numeral = /[0-9]/;
+
+          if (pswd.length === 0 || (!lowercase.test(pswd) || !uppercase.test(pswd) || !numeral.test(pswd))) {
+            document.getElementById("emp4").innerHTML = "Password should have at least 1 uppercase, 1 lowercase, 1 numeral";
           }else {
             document.getElementById("emp4").innerText = "";
           }
         });
         $("#confirmpswd").blur(function(){
           let confirm_pswd = document.getElementById("confirmpswd").value;
-          if (confirm_pswd.length == 0) {
-            document.getElementById("emp5").innerHTML = "Enter the Confirm Password";
-          }else {
-            document.getElementById("emp5").innerText = "";
+          if (confirm_pswd.length == 0 ) {
+              document.getElementById("emp5").innerHTML = "Passwords do not match";
+          } else {
+              document.getElementById("emp5").innerText = "";
           }
-        });
       });
+    });
       function registerUser() {
         let fname = document.getElementById("fname").value;
         let lname = document.getElementById("lname").value;
